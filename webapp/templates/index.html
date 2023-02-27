@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block menu %}
+    <a href="{% url 'product_add' %}">Добавить</a>
+{% endblock %}
+{% block content %}
+    <h1>Добро пожаловать в электронный магазин!</h1>
+    {% for product in products %}
+            <h2>Название: {{ product.title }}</h2>
+            <h2>Категория: {{ product.get_category_display }}</h2>
+            <h2>Цена: {{ product.price }}$</h2>
+            <img src="{{ product.photo }}" alt="product_photo" class="product_image" class="product_image">
+            <p>
+                <a href="{% url 'product_detail' product.pk %}">Подробнее о товаре..</a>
+            </p>
+    {% endfor %}
+{% endblock %}
+</body>
+</html>
