@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Книга{% endblock %}
+{% block menu %}
+    <a href="{% url 'product_add' %}">Добавить</a>
+    <a href="{% url 'product_update' product.pk%}">Обновить</a>
+    <a href="{% url 'product_delete' product.pk%}">Удалить</a>
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <h1>Товар</h1>
+        <p>Название: {{ product.title }}</p>
+        <p>Описание: {{ product.description }}</p>
+        <p>Категория: {{ product.get_category_display }}</p>
+        <img src="{{ product.photo }}" alt="product_photo" class="product_image">
+        <p>Остаток: {{ product.count }}</p>
+        <p>Цена: {{ product.price }}$</p>
+    </div>
+{% endblock %}
